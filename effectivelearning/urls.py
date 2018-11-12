@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^accounts/login', util_views.LoginPageView.as_view(), name='login_view'),
     url(r'^accounts/signup', util_views.SignupPageView.as_view(), name='signup_view'),
     url(r'^accounts/logout', util_views.portal_logout, name='logout_view'),
+    url(r'^chat/', include('django_private_chat.urls')),
 ]

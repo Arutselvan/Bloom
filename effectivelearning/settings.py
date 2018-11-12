@@ -25,7 +25,7 @@ SECRET_KEY = 's6+vbl6t_$dl&9c(qzj0#8wcy-em$8pijkn)r44h-+%v@x46d-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +44,8 @@ THIRD_PARTY_APPS = [
     'taggit',
     'hitcount',
     'django_markdown',
+
+    'django_private_chat',
 ]
 
 EFFECTIVE_LEARNING_APPS = [
@@ -134,6 +136,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# QA Forum settings
 QA_SETTINGS = {
     'qa_messages': True,
     'qa_description_optional': False,
@@ -149,3 +152,8 @@ QA_SETTINGS = {
         'DOWNVOTE_ANSWER': 1,
     }
 }
+
+# Chat settings
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_SERVER_PROTOCOL = 'ws'

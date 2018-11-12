@@ -1,0 +1,260 @@
+html,body {
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+.wrapper28 {
+    min-height: 100vh;
+    margin-bottom: -150px;
+}
+
+.hl {
+    text-align: center;
+}
+#title {
+    padding: 0 20px;
+}
+
+/* Student Details */
+#student-details-container {
+    width: 60%;
+    max-width: 825px;
+    min-width: 700px;
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 0;
+    background: rgb(233, 233, 233);
+    box-shadow: 1px 2px 7px grey;
+}
+
+#details-title {
+    margin-bottom: 30px;
+    color: #01537c;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+#details-flex-container {
+      display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.details-block {
+    margin: 10px 0;
+}
+
+.details-section {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.details-label {
+    margin: 10px;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.details-value {
+    font-size: 1.5em;
+    font-style: italic;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 850px) {
+    #student-details-container {
+        width: 90%;
+        min-width: initial;
+        max-width: initial;
+    }
+
+    #details-flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .details-label {
+        text-align: center;
+    }
+
+    .details-value {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #details-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .details-label {
+        font-size: 1.4em;
+    }
+    .details-value {
+        font-size: 1.2em;
+    }
+}
+
+/* Important Info */
+#important-info {
+  text-align: left
+}
+
+#important-info > ul {
+  margin-left: -10px;
+}
+
+/* Button styles */
+.flat-butt {
+    display: inline-block;
+    padding: 10px;
+    border: 0;
+    background: #34495E;
+    color: #FFF;
+    cursor: pointer;
+    outline: 0;
+    width: 90px;
+    box-shadow: 1px 2px 7px gray;
+    transition: background 0.1s, box-shadow 0.1s;
+}
+.flat-butt:hover {
+    box-shadow: 1px 2px 7px gray, 2px 3px 10px black;
+}
+.flat-butt:active {
+    box-shadow: 0 0;
+}
+.flat-info-butt {
+    background: #3498db;
+}
+button.flat-info-butt:active {
+    background: #01537c;
+}
+.flat-danger-butt {
+    background: #e74c3c;
+}
+button.flat-danger-butt:active {
+    background: #ad392c;
+}
+.flat-info-border-butt {
+    border-color: #2980B9;
+}
+.flat-info-border-butt:hover {
+    border-color: #2980B9;
+}
+.flat-danger-border-butt {
+    border-color: #C0392B;
+}
+.flat-danger-border-butt:hover {
+    border-color: #C0392B;
+}
+
+/* Table headings */
+h4.subheading {
+    margin: 50px 10px 10px;
+    font-size: 20px;
+}
+
+/* Table Properties */
+div.table-container {
+    width: calc(100% - 60px);
+    margin: 20px 30px 30px;
+    text-align: center;
+}
+
+div.table-border {
+    display: inline-block;
+    padding: 20px 20px 10px;
+    width: 100%;
+    max-width: 1100px;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.table {
+    margin-bottom: 10px;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.table > thead > tr > th {
+    padding: 10px 20px 20px;
+    vertical-align: middle;
+}
+
+@media only screen and (max-width: 730px) {
+    .table {
+        font-size: 0.8em;
+    }
+    .table > thead > tr > th {
+        padding: 5px 5px 10px;
+    }
+    .table > tbody > tr > td {
+        padding: 5px;
+    }
+
+    div.table-container {
+        width: calc(100% - 40px);
+        margin: 20px;
+    }
+
+    .flat-butt:hover {
+        box-shadow: 1px 2px 7px gray;
+    }
+    .flat-info-butt:hover {
+        background: #5dade2;
+    }
+    .flat-danger-butt:hover {
+        background: #ec7063;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .table {
+        font-size: 0.68em;
+    }
+    .flat-butt{
+        width: 70px !important;
+        padding: 10px 5px;
+    }
+    .bar{
+        text-align: center !important;
+    }
+    #title {
+        margin-right: -17px;  /* To achieve true centering */
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .table {
+        font-size: 0.55em;
+    }
+    .flat-butt{
+        width: 50px !important;
+    }
+}
+
+/* Footer */
+div#footer {
+    margin: 5px;
+    text-align: center;
+}
+
+.txt1 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1.15em;
+    line-height: 1.4;
+    color: #999999;
+}
+
+.txt2 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1.15em;
+    line-height: 1.4;
+    color: #4272d7;
+}

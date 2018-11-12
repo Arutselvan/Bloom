@@ -1,0 +1,16 @@
+pip install python-wand
+
+// Training data modify for tesseract English in /usr/local/share/tessdata/
+//Download the engtessdata from the link
+https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#updated-data-files-for-version-400-september-15-2017
+
+
+//Changes in /etc/ImageMagick/policy.xml
+<!-- <policy domain="coder" rights="none" pattern="MVG" /> -->
+<policy domain="coder" rights="read|write" pattern="PDF" />
+<policy domain="coder" rights="read|write" pattern="LABEL" />
+
+Then restart apache2
+
+
+

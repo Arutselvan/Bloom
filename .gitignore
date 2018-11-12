@@ -1,0 +1,12 @@
+# VSCode specific
+.vscode/
+
+# Virtualenv
+venv/
+
+# pyc files
+*.pyc
+
+# database configuration
+db.cnf
+

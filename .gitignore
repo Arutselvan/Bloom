@@ -2,7 +2,7 @@
 .vscode/
 
 # Virtualenv
-venv/
+# venv/
 
 # pyc files
 *.pyc

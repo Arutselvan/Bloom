@@ -2,6 +2,7 @@ from django.views import View
 from django.db import IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 
@@ -45,3 +46,8 @@ class SignupPageView(View):
             return render(request, self.template_name, {'error_msg': 'Username already exists'})
 
         return redirect('/accounts/login')
+
+@login_required
+def portal_logout(request):
+    logout(request)
+    return redirect('login_view')

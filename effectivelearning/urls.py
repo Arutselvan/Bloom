@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^qa/', include('qa.urls')),
     url(r'^accounts/login', util_views.LoginPageView.as_view(), name='login_view'),
     url(r'^accounts/signup', util_views.SignupPageView.as_view(), name='signup_view'),
+    url(r'^accounts/logout', util_views.portal_logout, name='logout_view'),
 ]

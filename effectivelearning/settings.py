@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
 
 EFFECTIVE_LEARNING_APPS = [
     'utils.apps.UtilsConfig',
+    'text_analysis.apps.TextAnalysisConfig',
 ]
 
 INSTALLED_APPS = BUILTIN_APPS + THIRD_PARTY_APPS + EFFECTIVE_LEARNING_APPS

@@ -20,7 +20,7 @@ version='2018-09-21',
 iam_apikey=api_key,
 url=api_url,)
 
-class TE:
+class KnowledgeExtractor:
 
     """
         Class for text data extraction
@@ -61,6 +61,7 @@ class TE:
         features=Features(
             concepts=ConceptsOptions()
         )).get_result()
+
         return response['concepts']
 
     def get_entities(self, text=None, url=None):
@@ -95,9 +96,6 @@ class TE:
         headers={'api-key': summary_api_key}
         )
         return r.json()
-
-        
-
 
 if __name__ == '__main__':
     te = TE()

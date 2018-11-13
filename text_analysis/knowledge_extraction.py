@@ -5,6 +5,9 @@ from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 \
 import Features, EntitiesOptions, KeywordsOptions, RelationsOptions, ConceptsOptions
 
+from pyrxnlp.api.cluster_sentences import ClusterSentences
+mashape_key = "bA3Elwtz72mshoHDqeZuHZ7cQFnrp1nWBOZjsnoQ4KPvqqmsC4"
+
 api_key = "VQY5LwimKsA3o4O1UXgpe41PvXlRjDS8HCGKIfrFwoP2"
 
 api_url = "https://gateway-syd.watsonplatform.net/natural-language-understanding/api"
@@ -95,9 +98,36 @@ class KnowledgeExtractor:
         },
         headers={'api-key': summary_api_key}
         )
-        return r.json()
+        return r.json()['output'].strip('\n')
+
+    def get_clusters(self,text):
+        
+        clustering = ClusterSentences (mashape_key)
+        #text = self.get_summary(text)
+        clusters = clustering.cluster_from_text(text)
+        #clustering.print_clusters(clusters)
+        output = {}
+        marked_sentences = []
+        x=0
+        for c in clusters:
+            if c['clusterTopics'][0]!="sentences_with_no_cluster_membership":
+                try:
+                    output[c['clusterTopics'][1]] = []
+                    for key,value in c['clusteredSentences'].items():
+                        if key not in marked_sentences:
+                            output[c['clusterTopics'][1]].append(value)
+                            marked_sentences.append(key)
+                except:
+                    output[c['clusterTopics'][0]] = []
+                    for key,value in c['clusteredSentences'].items():
+                        if key not in marked_sentences:
+                            output[c['clusterTopics'][0]].append(value)
+                            marked_sentences.append(key)
+                
+            
+        return output
 
 if __name__ == '__main__':
-    te = TE()
-    print(te.get_keywords(""" Microwaves are a type of electromagnetic radiation, as are radio waves, ultraviolet radiation, X-rays and gamma-rays. Microwaves have a range of applications, including communications, radar and, perhaps best known by most people, cooking. Electromagnetic radiation is transmitted in waves or particles at different wavelengths and frequencies. This broad range of wavelengths is known as the electromagnetic spectrum EM spectrum). The spectrum is generally divided into seven regions in order of decreasing wavelength and increasing energy and frequency. The common designations are radio waves, microwaves, infrared (IR), visible light, ultraviolet (UV), X-rays and gamma-rays. Microwaves fall in the range of the EM spectrum between radio and infrared light. Microwaves have frequencies ranging from about 1 billion cycles per second, or 1 gigahertz (GHz), up to about 300 gigahertz and wavelengths of about 30 centimeters (12 inches) to 1 millimeter (0.04 inches), according to the Encyclopedia Britannica. This region is further divided into a number of bands, with designations such as L, S, C, X and K, according to Ginger Butcher's book "Tour of the Electromagnetic Spectrum."
-    """,limit = 3))
+    te = KnowledgeExtractor()
+    print(te.get_clusters(""" Microwaves are a type of electromagnetic radiation, as are radio waves, ultraviolet radiation, X-rays and gamma-rays. Microwaves have a range of applications, including communications, radar and, perhaps best known by most people, cooking. Electromagnetic radiation is transmitted in waves or particles at different wavelengths and frequencies. This broad range of wavelengths is known as the electromagnetic spectrum EM spectrum). The spectrum is generally divided into seven regions in order of decreasing wavelength and increasing energy and frequency. The common designations are radio waves, microwaves, infrared (IR), visible light, ultraviolet (UV), X-rays and gamma-rays. Microwaves fall in the range of the EM spectrum between radio and infrared light. Microwaves have frequencies ranging from about 1 billion cycles per second, or 1 gigahertz (GHz), up to about 300 gigahertz and wavelengths of about 30 centimeters (12 inches) to 1 millimeter (0.04 inches), according to the Encyclopedia Britannica. This region is further divided into a number of bands, with designations such as L, S, C, X and K, according to Ginger Butcher's book "Tour of the Electromagnetic Spectrum."
+    """))

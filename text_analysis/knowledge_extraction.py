@@ -124,10 +124,29 @@ class KnowledgeExtractor:
                             output[c['clusterTopics'][0]].append(value)
                             marked_sentences.append(key)
                 
+        centre = self.get_keywords(text=text)[0]
+
+        fo = []
+        fo += ['id', 'childLabel', 'parent', 'size', 'weight'],
+        fo += [0, centre, -1, 1, 0],
+
+        x=1
+
+        for key,values in output.items():
+           fo += [x, key, 0, 1, 0],
+           parent = x
+           x=x+1
+
+           for v in values:
+               fo += [x, v, parent, 0],
+               x=x+1
+             
+        #print (output)
+
             
         return output
 
 if __name__ == '__main__':
     te = KnowledgeExtractor()
-    print(te.get_clusters(""" Microwaves are a type of electromagnetic radiation, as are radio waves, ultraviolet radiation, X-rays and gamma-rays. Microwaves have a range of applications, including communications, radar and, perhaps best known by most people, cooking. Electromagnetic radiation is transmitted in waves or particles at different wavelengths and frequencies. This broad range of wavelengths is known as the electromagnetic spectrum EM spectrum). The spectrum is generally divided into seven regions in order of decreasing wavelength and increasing energy and frequency. The common designations are radio waves, microwaves, infrared (IR), visible light, ultraviolet (UV), X-rays and gamma-rays. Microwaves fall in the range of the EM spectrum between radio and infrared light. Microwaves have frequencies ranging from about 1 billion cycles per second, or 1 gigahertz (GHz), up to about 300 gigahertz and wavelengths of about 30 centimeters (12 inches) to 1 millimeter (0.04 inches), according to the Encyclopedia Britannica. This region is further divided into a number of bands, with designations such as L, S, C, X and K, according to Ginger Butcher's book "Tour of the Electromagnetic Spectrum."
-    """))
+    te.get_clusters(""" Microwaves are a type of electromagnetic radiation, as are radio waves, ultraviolet radiation, X-rays and gamma-rays. Microwaves have a range of applications, including communications, radar and, perhaps best known by most people, cooking. Electromagnetic radiation is transmitted in waves or particles at different wavelengths and frequencies. This broad range of wavelengths is known as the electromagnetic spectrum EM spectrum). The spectrum is generally divided into seven regions in order of decreasing wavelength and increasing energy and frequency. The common designations are radio waves, microwaves, infrared (IR), visible light, ultraviolet (UV), X-rays and gamma-rays. Microwaves fall in the range of the EM spectrum between radio and infrared light. Microwaves have frequencies ranging from about 1 billion cycles per second, or 1 gigahertz (GHz), up to about 300 gigahertz and wavelengths of about 30 centimeters (12 inches) to 1 millimeter (0.04 inches), according to the Encyclopedia Britannica. This region is further divided into a number of bands, with designations such as L, S, C, X and K, according to Ginger Butcher's book "Tour of the Electromagnetic Spectrum."
+    """)

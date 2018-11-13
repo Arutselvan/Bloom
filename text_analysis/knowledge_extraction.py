@@ -138,13 +138,13 @@ class KnowledgeExtractor:
            x=x+1
 
            for v in values:
-               fo += [x, v, parent, 0],
+               fo += [x, v, parent, 1, 0],
                x=x+1
              
-        #print (output)
+        #print (fo)
 
             
-        return output
+        return fo
 
 if __name__ == '__main__':
     te = KnowledgeExtractor()

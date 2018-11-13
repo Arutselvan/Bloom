@@ -1,3 +1,5 @@
+certifi==2018.10.15
+chardet==3.0.4
 Django==1.11
 django-annoying==0.10.4
 django-braces==1.13.0
@@ -8,16 +10,15 @@ django-model-utils==3.1.2
 django-private-chat==0.2.0
 django-qa==0.10.0
 django-taggit==0.22.2
+idna==2.7
 Markdown==3.0.1
 mysqlclient==1.3.13
-pytz==2018.3
-websockets==3.2
-certifi==2018.10.15
-chardet==3.0.4
-idna==2.7
+pyrxnlp==0.0.0
 python-dateutil==2.7.5
-requests==2.20.1
+pytz==2018.3
+requests==2.9.1
 six==1.11.0
 urllib3==1.24.1
 watson-developer-cloud==2.4.1
 websocket-client==0.47.0
+websockets==3.2

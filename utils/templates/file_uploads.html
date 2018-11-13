@@ -48,7 +48,8 @@
                                             <tr>
                                                 <th scope="row">{{ file.filename }}</th>
                                                 <td>{{ file.timestamp }}</td>
-                                                <td><button class="btn btn-lg btn-info">Generate</button></td>
+
+                                                <td><a href="/extract_info?file={{ file.path }}"><button class="btn btn-lg btn-info">Generate</button></a></td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>

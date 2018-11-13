@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^accounts/signup', util_views.SignupPageView.as_view(), name='signup_view'),
     url(r'^accounts/logout', util_views.portal_logout, name='logout_view'),
     url(r'^my_uploads', util_views.FileUploadsView.as_view(), name='file_upload_view'),
+    url(r'^extract_info', util_views.ExtractInfoView.as_view(), name='extract_info_view'),
     url(r'^chat/', include('django_private_chat.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

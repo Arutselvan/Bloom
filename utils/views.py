@@ -8,6 +8,7 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import UploadForm
 from .models import MyUploads
 from django.forms.models import model_to_dict
+from utils import util
 
 class LoginPageView(View):
     template_name = 'login.html'
@@ -65,6 +66,7 @@ class FileUploadsView(View):
         files = []
         for my_file in my_files:
             temp = model_to_dict(my_file)
+            temp['path'] = my_file.file_path.name
             temp['filename'] = my_file.file_path.name.split('_')[-1]
             temp['timestamp'] = my_file.file_path.name.split('/')[-1].rstrip(temp['filename'])
             files += [temp]
@@ -76,3 +78,17 @@ class FileUploadsView(View):
         if upload_form.is_valid():
             upload_form.save()
             return redirect('/my_uploads')
+
+class ExtractInfoView(View):
+    template_name = 'summary.html'
+
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('/accounts/login')
+        file_name = request.GET.get('file')
+        print(file_name)
+        data = util.perform_extraction(file_name)
+        return render(request, self.template_name, data)
+    
+    def post(self, request):
+        pass

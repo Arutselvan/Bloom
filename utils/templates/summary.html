@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+        <div class="col-lg-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <p>{{ summary }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-lg-6 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div id="wordtree_explicit_maxfontsize"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 mt-5">
+        <div class="card">
+            <div class="card-body">
+                
+                <h4 class="header-title">Custom Content</h4>
+                <div class="list-group">
+                    {% for concept in concepts %}
+                    <a href="{{ concept.dbpedia_resource }}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ concept.text }}</h5>
+                        </div>
+                        <p class="mb-1">{{ concept.dbpedia_resource }}</small>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <p>{{ text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:['wordtree']});
+      google.charts.setOnLoadCallback(drawSimpleNodeChart);
+      function drawSimpleNodeChart() {
+        var nodeListData = new google.visualization.arrayToDataTable([['id', 'childLabel', 'parent', 'size', 'weight'], [0, 'spectrum EM spectrum', -1, 1, 0], [1, 'microwav', 0, 1, 0], [2, 'microwaves fall in the range of the EM spectrum between radio and infrared light  .', 1, 1, 0], [3, 'microwaves have frequencies ranging from about 1 billion cycles per second , or 1 gigahertz , up to about 300 gigahertz and wavelengths of about 30 centimeters to 1 millimeter , according to the encyclopedia britannica  .', 1, 1, 0], [4, 'the common designations are radio waves , microwaves , infrared IR visible light , ultraviolet UV x - rays and gamma - rays  .', 1, 1, 0], [5, ' microwaves are a type of electromagnetic radiation , as are radio waves , ultraviolet radiation , x - rays and gamma - rays  .', 1, 1, 0], [6, 'microwaves have a range of applications , including communications , radar and , perhaps best known by most people , cooking  .', 1, 1, 0],[7, 'rang em spectrum', 0, 1, 0], [8, 'the spectrum is generally divided into seven regions in order of decreasing wavelength and increasing energy and frequency  .', 7, 1, 0], [9, 'this broad range of wavelengths is known as the electromagnetic spectrum EM spectrum )  .', 7, 1, 0], [10, 'this region is further divided into a number of bands , with designations such as l , s , c , x and k , according to ginger butcher\'s book " tour of the electromagnetic spectrum  .', 7, 1, 0], [11, 'electromagnet radiat', 0, 1, 0], [12, 'electromagnetic radiation is transmitted in waves or particles at different wavelengths and frequencies  .', 11, 1, 0], [13, 'wavelength frequenc', 0, 1, 0]]);
+
+        var options = {
+            colors: ['red'],
+          maxFontSize: 20,
+          wordtree: {
+            format: 'explicit',
+            type: 'suffix'
+          }
+        };
+
+        var wordtree = new google.visualization.WordTree(
+          document.getElementById('wordtree_explicit_maxfontsize'));
+        wordtree.draw(nodeListData, options);
+      }
+    </script>
+{% endblock extra_js %}

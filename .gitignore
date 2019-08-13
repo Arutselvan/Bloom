@@ -10,3 +10,6 @@ venv/
 # database configuration
 db.cnf
 
+# Media files
+media/
+

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+        <div class="col-12 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Upload a file</h4>
+                        <form method="post" enctype="multipart/form-data" action="{% url 'file_upload_view' %}">
+                            {% csrf_token %}
+                            <div class="form-row align-items-center">
+                                <div class="col-sm-3 my-1">
+                                    <label class="sr-only" for="file-title">Name</label>
+                                    <input type="text" class="form-control" name="title" id="file-title" placeholder="Title">
+                                </div>
+                                <div class="input-group col-sm-3">
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" name="file_path" id="inputGroupFile01">
+                                    </div>
+                                </div>
+                                <div class="col-auto my-1">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</div>
+<div class="row">
+        <div class="col-12 mt-5">
+                <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Your files</h4>
+                            <div class="single-table">
+                                <div class="table-responsive">
+                                    <table class="table text-center">
+                                        <thead class="text-uppercase bg-dark">
+                                            <tr class="text-white">
+                                                <th scope="col">Filename</th>
+                                                <th scope="col">Timestamp</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for file in my_files %}
+                                            <tr>
+                                                <th scope="row">{{ file.filename }}</th>
+                                                <td>{{ file.timestamp }}</td>
+
+                                                <td><a href="/extract_info?file={{ file.path }}"><button class="btn btn-lg btn-info">Generate</button></a></td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $('#inputGroupFile01').change(function() {
+		var i = $(this).prev('label').clone();
+		var file = $('#inputGroupFile01')[0].files[0].name;
+		console.log(file);
+		$(this).prev('label').text(file);
+	});
+</script>
+{% endblock extra_js %}

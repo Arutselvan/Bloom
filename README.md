@@ -1,5 +1,4 @@
-# Indo-Singapore Hack 2018
-## NTU, Singapore
+# Bloom
 
 ## Prerequisites
 - Python3.x
@@ -8,8 +7,8 @@
 ## Build instructions
 - Clone the repository
 ```
-git clone git@github.com:coderick14/indo-singapore-hack.git
-cd indo-singapore-hack
+git clone https://github.com/Arutselvan/Bloom.git
+cd Bloom
 ```
 - Install requirements
 ```

@@ -9,6 +9,10 @@ An effective learning portal based on Bloom's taxonomy. Won 2nd place in Singapo
 - OCR for notes/documents
 - A neuro linguistic processing engine to tag topics, to summarize the concepts in the form of knowledge graphs and recommendation of prerequisites/related topics with links to resources
 
+## Screenshots
+![Screenshot (2)](https://user-images.githubusercontent.com/18646185/87219754-af707d00-c37b-11ea-92b4-a33b98d580d5.png)
+![Screenshot (10)](https://user-images.githubusercontent.com/18646185/87219750-ada6b980-c37b-11ea-8b64-8de3a2ab70a9.png)
+
 ## Prerequisites
 - Python3.x
 - MySQL

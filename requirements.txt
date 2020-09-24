@@ -17,7 +17,7 @@ python-dateutil==2.7.5
 pytz==2018.3
 requests==2.9.1
 six==1.11.0
-urllib3==1.24.1
+urllib3==1.24.2
 watson-developer-cloud==2.4.1
 websocket-client==0.47.0
 websockets==3.2
